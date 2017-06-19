@@ -13,7 +13,8 @@ let baseConfig = {
 	resolve: {
 		alias: {
 			'vue$': 'vue/dist/vue.common.js',
-			'common': resolve('src/common')
+			'common': resolve('src/common'),
+			'components':resolve('src/components')
 		}
 	},
 	module: {

@@ -41,6 +41,7 @@
     padding: 80px 0 40px 0;
     box-sizing: border-box;
 
+
     #admin-main{
       width: 100%;
       height: 100%;
@@ -52,6 +53,8 @@
       .admin-main-view{
         width: 100%;
         height: 100%;
+        padding: 35px 50px;
+        box-sizing: border-box;
       }
     }
   }
