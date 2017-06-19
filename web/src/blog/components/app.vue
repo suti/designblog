@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    {{messages}}
-    <div id="hz-admin-main-content">
+    <div id="hz-admin-main">
+      <blogHeader></blogHeader>
       <transition appear name="slide" mode="out-in">
         <router-view
           class="view"
@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+  import blogHeader from './blogHeader/blogHeader.vue'
   export default{
   	name:'',
   	data(){
@@ -19,28 +20,31 @@
       }
     },
     mounted(){
-  		console.log('ok')
+
+    },
+    components:{
+    	blogHeader
     }
   }
 </script>
 <style lang="less" rel="stylesheet/less" scoped>
+  @import "layout";
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    width: 100%;
     height: 100%;
-    padding-left: 118px;
-    box-sizing: border-box;
-    background: #FAFAFA;
+    padding:0 40px;
+    box-sizing: content-box;
+    margin: 0 auto;
 
-    #hz-admin-main-content{
-      padding: 0 48px;
+    #hz-admin-main{
+      padding-top: 80px;
       width: 100%;
       box-sizing: border-box;
       height: 100%;
-      overflow-y:auto;
+      position: relative;
     }
   }
 </style>
