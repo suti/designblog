@@ -13,6 +13,7 @@ let baseConfig = {
 	resolve: {
 		alias: {
 			'vue$': 'vue/dist/vue.common.js',
+			'config':resolve('config'),
 			'common': resolve('src/common'),
 			'components':resolve('src/components')
 		}
@@ -27,7 +28,7 @@ let baseConfig = {
 						loaders: {
 							css: ExtractTextPlugin.extract({
 								use: 'css-loader',
-								fallback: 'vue-style-loader'
+								fallback: 'vue-common-loader'
 							}),
 							less: ExtractTextPlugin.extract({
 								use: 'css-loader!less-loader',

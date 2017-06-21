@@ -5,40 +5,57 @@
          @input="input" ref="input"
          @click="getFocusOffset()"
          @keyup.up.down.left.right="getFocusOffset()"
-    ></div>
+    >
+      <span v-if="showPlaceholder">{{placeholder}}</span>
+    </div>
     <div class="admin-comp-text-count">
-      {{focusOffset+'/'+count}}
+      <!--{{focusOffset+'/'+count}}-->
+      {{count+'/'+total}}
     </div>
   </div>
 </template>
 <script>
-  export default{
-  	name:'admin-comp-text',
-    data(){
-  		return{
-  			inputValue:'',
-			  focusOffset:0
+	export default{
+		name:'admin-comp-text',
+		data(){
+			return{
+				inputValue:'',
+				focusOffset:0,
+				showPlaceholder:false
+			}
+		},
+		props:{
+			width:{
+				default:600
+			},
+			placeholder:{
+				default:null
+			},
+      total:{
+				default:140
       }
-    },
-    props:{
-    	width:{
-    		default:600
-      }
-    },
-    methods:{
-	    input(v){
-		    this.inputValue=v.target.innerText
-        this.$emit('value',this.inputValue)
-        this.getFocusOffset()
-	    },
-      getFocusOffset(){
-	      this.focusOffset=window.getSelection().focusOffset
-      }
-    },
-    computed:{
-    	count(){return this.inputValue.length}
-    }
-  }
+		},
+		methods:{
+			input(v){
+				this.inputValue=v.target.innerText
+				this.$emit('input',this.inputValue)
+				this.getFocusOffset()
+			},
+			getFocusOffset(){
+				this.focusOffset=window.getSelection().focusOffset
+			}
+		},
+		computed:{
+			count(){
+				if(this.placeholder!==null)
+					this.showPlaceholder=this.inputValue.length===0
+				return this.inputValue.length
+			}
+		},
+		mounted(){
+			this.showPlaceholder=this.placeholder!==null
+		}
+	}
 </script>
 <style lang="less" rel="stylesheet/less" scoped>
   .admin-comp-text{
@@ -46,7 +63,7 @@
     padding: 8px 24px 40px 16px;
     border: 1px solid #E0E0E0;
     border-radius: 2px;
-    background: #F8F8F8;
+    background: #ffffff;
     position: relative;
     cursor: text;
     box-sizing: border-box;

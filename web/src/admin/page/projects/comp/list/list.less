@@ -1,0 +1,171 @@
+.admin-project-list{
+  width: 880px;
+  height: 186px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background: #F8F8F8;
+
+  .admin-project-list-top{
+    position: relative;
+    width: 100%;
+    height: 40px;
+
+    &:after{
+      content: '';
+      position: absolute;
+      bottom:0;
+      left: 0;
+      width: 100%;
+      height:1px;
+      background: #E0E0E0;
+    }
+    
+    &>div{
+      float: left;
+    }
+
+    .admin-project-list-top-number{
+      height: 100%;
+      min-width: 80px;
+      margin-right: 20px;
+      line-height: 40px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #4F4F4F;
+    }
+
+    .admin-project-list-top-time{
+      color: #828282;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 40px;
+      margin-right:24px ;
+    }
+
+    .admin-project-list-top-sort{
+      width: 90px;
+      margin-right: 24px;
+
+      &>span{
+        display: block;
+        float: left;
+        color: #828282;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 40px;
+        margin-right: 10px;
+      }
+
+      .admin-project-list-top-list{
+        margin: 8px 0;
+        float: left;
+      }
+    }
+
+    .admin-project-list-top-size{
+      width: 154px;
+
+      &>span{
+        display: block;
+        float: left;
+        color: #828282;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 40px;
+        margin-right: 10px;
+      }
+
+      .admin-project-list-top-list{
+        margin: 8px 0;
+        float: left;
+      }
+    }
+
+    .admin-project-list-top-button{
+      float: right;
+
+      &:after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+      
+      &>span{
+        display: block;
+        float: left;
+        //width: auto;
+        //height: 16px;
+        padding: 2px 8px;
+        border:1px solid #E0E0E0;
+        color: #828282;
+        font-size: 12px;
+        font-weight: bold;
+        background: #FFFFFF;
+        margin:12px 8px 0 0;
+        cursor: pointer;
+
+        &[class~='active'],&:hover{
+          border:1px solid #EB1E27;
+          color: #ffffff;
+          background: #EB1E27;
+        }
+      }
+    }
+  }
+
+  .admin-project-list-content{
+    height: 120px;
+    width: 100%;
+    padding-top: 10px;
+    box-sizing: border-box;
+
+    .admin-project-list-content-img{
+      float: left;
+      width: 200px;
+      height: 100%;
+      margin-right: 16px;
+    }
+    
+    .admin-project-list-content-text{
+      float: left;
+      height: 100%;
+      width: 632px;
+
+      .admin-project-list-content-text-title{
+        width: 100%;
+        margin-bottom: 12px;
+
+        .admin-project-list-content-text-title-main{
+          display: block;
+          color: #333333;
+          font-weight: bold;
+          font-size:16px;
+        }
+
+        .admin-project-list-content-text-title-en{
+          color: #333333;
+          font-weight: bold;
+          font-size:14px;
+          display: block;
+          margin-top: 4px;
+        }
+
+      }
+
+      .admin-project-list-content-text-more{
+        width: 100%;
+
+        span{
+          display: block;
+          color: #828282;
+          font-size: 12px;
+          margin-bottom: 8px;
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+}
