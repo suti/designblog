@@ -6,6 +6,7 @@ import App from './components/app.vue'
 import VueRouter from 'vue-router'
 import routes from './router/routes'
 import store from './store/index'
+import http from 'config/http_config'
 
 Vue.use(VueRouter)
 

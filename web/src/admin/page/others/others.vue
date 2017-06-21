@@ -1,8 +1,8 @@
 <template>
   <div class="admin-others">
-    <adminBlock title="其他">
+    <adminBlock title="其他" :button="{des:null}">
     </adminBlock>
-    <adminBlock title="信箱">
+    <adminBlock title="信箱" :button="{des:null}">
     </adminBlock>
   </div>
 </template>

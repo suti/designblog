@@ -6,7 +6,9 @@
       <div class="admin-block-title-button"
            v-show="button.des!==null"
            @click="$emit('cmd',button.cmd)"
-      >{{button.des}}</div>
+      >
+        <span>{{button.des}}</span>
+      </div>
     </div>
     <slot></slot>
   </div>
@@ -39,7 +41,6 @@
     margin-bottom: 32px;
 
     .admin-block-title{
-      width: 100%;
       height: 23px;
       padding-left: 16px;
       position: relative;

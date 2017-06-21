@@ -24,6 +24,9 @@
 			  messages:'admin'
       }
     },
+    mounted(){
+
+    },
     components:{
 	    adminFooter,adminHeader,adminNav
     }
@@ -41,7 +44,6 @@
     padding: 80px 0 40px 0;
     box-sizing: border-box;
 
-
     #admin-main{
       width: 100%;
       height: 100%;
@@ -53,8 +55,13 @@
       .admin-main-view{
         width: 100%;
         height: 100%;
-        padding: 35px 50px;
+        padding: 35px 50px 0 50px;
+        overflow: auto;
         box-sizing: border-box;
+
+        .inner-block-mb{
+          margin-bottom: 4px;
+        }
       }
     }
   }
