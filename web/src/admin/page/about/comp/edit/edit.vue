@@ -1,27 +1,19 @@
 <template>
-  <div class="admin-project-edit">
-    <div class="admin-project-edit-cancel" @click="cancel">
+  <div class="admin-about-edit">
+    <div class="admin-about-edit-cancel" @click="cancel">
       <span>返回</span>
     </div>
-    <div class="admin-project-edit-content">
-      <div class="admin-project-edit-content-intro">
-        <editArea type="input" title="作品中文名" placeholder="输入作品中文名称" :required="true"></editArea>
-        <editArea type="input" title="作品英文名" placeholder="输入作品英文名称" :required="true"></editArea>
-        <editArea type="input" title="创作年份" placeholder="输入创作年份" :required="true"></editArea>
-        <editArea type="input" title="客户名称" placeholder="输入客户名称" :required="true"></editArea>
-        <editArea type="textarea" title="作品摘要" placeholder="作品摘要（140字以内）" :required="true"></editArea>
-        <editArea type="input" title="作品标签" placeholder="作品标签，请用用“/”分隔" :required="true"></editArea>
-        <editArea type="input" title="参与者" placeholder="参与者，请用用“ ”分隔" :required="true"></editArea>
-        <editArea type="textarea" title="作品详细介绍" placeholder="作品详细介绍" :required="true"></editArea>
-        <editArea type="input" title="相关链接" placeholder="输入相关链接" :required="false"></editArea>
-        <uploadImage :mini="true" class="admin-project-edit-content-intro-img"></uploadImage>
-        <div class="admin-project-edit-content-intro-button">
+    <div class="admin-about-edit-content">
+      <div class="admin-about-edit-content-intro">
+        <editArea type="input" title="中文名称" placeholder="输入英文名称" :required="true"></editArea>
+        <editArea type="input" title="英文名称" placeholder="输入英文名称" :required="true"></editArea>
+        <div class="admin-about-edit-content-intro-button">
           <span>保存并发布</span>
           <span>取消</span>
         </div>
       </div>
-      <div class="admin-project-edit-content-input">
-        <Redit></Redit>
+      <div class="admin-about-edit-content-input">
+
       </div>
     </div>
   </div>
@@ -29,17 +21,15 @@
 <script>
   import editArea from '../../../../components/editarea/editArea.vue'
   import uploadImage from '../../../../components/uploadImage/uploadImage.vue'
-  import Redit from '../../../../components/editarea/richTextEditor.vue'
 
   export default{
-  	name:'admin-project-edit',
+  	name:'admin-about-edit',
     data(){
   		return{}
     },
     components:{
 	    editArea,
-	    uploadImage,
-	    Redit
+	    uploadImage
     },
     methods:{
 	    cancel(){
@@ -49,7 +39,7 @@
   }
 </script>
 <style lang="less" rel="stylesheet/less" scoped>
-  .admin-project-edit{
+  .admin-about-edit{
     width: 100%;
 
     &:after{
@@ -58,7 +48,7 @@
       clear: both;
     }
 
-    .admin-project-edit-cancel{
+    .admin-about-edit-cancel{
       width: 88px;
       height: 40px;
       padding-left: 32px;
@@ -96,7 +86,7 @@
       }
     }
 
-    .admin-project-edit-content{
+    .admin-about-edit-content{
       width: 100%;
       min-width: 1234px;
 
@@ -106,16 +96,16 @@
         clear: both;
       }
 
-      .admin-project-edit-content-intro{
+      .admin-about-edit-content-intro{
         float: left;
         width: 474px;
         margin-right: 70px;
 
-        .admin-project-edit-content-intro-img{
+        .admin-about-edit-content-intro-img{
           margin-bottom: 24px;
         }
 
-        .admin-project-edit-content-intro-button{
+        .admin-about-edit-content-intro-button{
           height: 30px;
 
           &>span{
@@ -144,9 +134,10 @@
         }
       }
 
-      .admin-project-edit-content-input{
+      .admin-about-edit-content-input{
         float: left;
-        width: 700px;
+        width: 600px;
+        height: 800px;
         background: #E0E0E0;
       }
     }

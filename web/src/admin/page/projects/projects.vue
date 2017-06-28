@@ -28,7 +28,6 @@
   import projectList from './comp/list/list.vue'
   import edit from './comp/edit/edit.vue'
 
-
 	export default{
 		name:'admin-project',
 		data(){

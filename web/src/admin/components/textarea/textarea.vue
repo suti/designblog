@@ -6,7 +6,7 @@
          @click="getFocusOffset()"
          @keyup.up.down.left.right="getFocusOffset()"
     >
-      <span v-if="showPlaceholder">{{placeholder}}</span>
+      <span v-if="showPlaceholder" contenteditable="false">{{placeholder}}</span>
     </div>
     <div class="admin-comp-text-count">
       <!--{{focusOffset+'/'+count}}-->
