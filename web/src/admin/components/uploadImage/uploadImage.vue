@@ -1,5 +1,5 @@
 <template>
-  <div class="admin-comp-uploadImage">
+  <div class="admin-comp-uploadImage" :style="{width:(mini?474:880)+'px'}">
     <div class="admin-comp-uploadImage-line1">
       <div class="admin-comp-uploadImage-title">
         <span>{{'图片1'}}</span>
@@ -7,7 +7,7 @@
       <div class="admin-comp-uploadImage-button">
         <span>上传图片</span>
       </div>
-      <input type="text" class="admin-comp-uploadImage-url" placeholder="如有链接，请输入跳转链接">
+      <input v-show="!mini" type="text" class="admin-comp-uploadImage-url" placeholder="如有链接，请输入跳转链接">
     </div>
     <div class="admin-comp-uploadImage-line2">
       <div class="admin-comp-uploadImage-states">
@@ -29,12 +29,17 @@
     	button(){
 
       }
+    },
+    props:{
+    	mini:{
+    		default:false
+      }
     }
   }
 </script>
 <style lang="less" rel="stylesheet/less" scoped>
   .admin-comp-uploadImage{
-    width: 800px;
+    width: 880px;
     height:80px;
     background: #F8F8F8;
     position: relative;
