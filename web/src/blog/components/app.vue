@@ -7,11 +7,13 @@
           class="view"
         ></router-view>
       </transition>
+      <blogFooter></blogFooter>
     </div>
   </div>
 </template>
 <script>
   import blogHeader from './blogHeader/blogHeader.vue'
+  import blogFooter from './blogFooter/blogFooter.vue'
   export default{
   	name:'',
   	data(){
@@ -23,7 +25,7 @@
 
     },
     components:{
-    	blogHeader
+    	blogHeader,blogFooter
     }
   }
 </script>
