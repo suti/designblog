@@ -1,0 +1,142 @@
+#blog-footer {
+  width: 1200px;
+  position: fixed;
+  bottom: 40px;
+}
+
+.blog-footer-logo {
+  width: 97px;
+  height: 40px;
+  margin: 20px 0;
+  background: url("../../../common/images/LOGO40px.svg") no-repeat 0 0;
+}
+
+.blog-footer-left {
+  float: left;
+}
+
+.blog-footer-left .blog-footer-business-list {
+  font-size: 14px;
+  font-weight: bold;
+  .blog-footer-business-list-item {
+    span:nth-child(1) {
+      display: inline-block;
+      width: 244px;
+    }
+    span:nth-child(2) {
+      margin-left: 166px;
+      cursor: pointer;
+      &:hover {
+        color: red;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.blog-footer-left .blog-footer-business-address {
+  margin-top: 24px;
+  font-size: 14px;
+  color: #9b9b9b;
+
+  .blog-footer-business-address-item {
+    > span:nth-child(1) {
+      width: 334px;
+      display: inline-block;
+    }
+
+    .blog-footer-business-address-item-logo {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      margin-left: 74px;
+    }
+    .wechat {
+      background: url("./img/footer-wechat.svg") 0 0 no-repeat;
+      &:hover {
+        background: url("./img/footer-wechat-active.svg") 0 0 no-repeat;
+      }
+    }
+    .weibo {
+      background: url("./img/footer-weibo.svg") 0 0 no-repeat;
+      &:hover {
+        background: url("./img/footer-weibo-active.svg") 0 0 no-repeat;
+      }
+    }
+    .bahance {
+      background: url("./img/footer-behance.svg") 0 0 no-repeat;
+      &:hover {
+        background: url("./img/footer-behance-active.svg") 0 0 no-repeat;
+      }
+    }
+    .zcool {
+      background: url("./img/footer-zcool.svg") 0 0 no-repeat;
+      &:hover {
+        background: url("./img/footer-zcool-active.svg") 0 0 no-repeat;
+      }
+    }
+
+    > span:nth-child(2) {
+      margin-left: 8px;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+  }
+}
+
+.blog-footer-right {
+  float: right;
+  width: 390px;
+  p:nth-child(1) {
+    font-weight: 600;
+  }
+
+  p:nth-child(2) {
+    color: #9b9b9b;
+  }
+
+  .blog-footer-right-input {
+    width: 380px;
+    height: 40px;
+    background-color: white;
+    margin-bottom: 8px;
+    > input {
+      width: 380px;
+      border: 1px solid white;
+      padding: 12px 4px;
+      &:focus {
+        outline: none;
+        border: 1px solid red;
+      }
+    }
+
+  }
+
+  .blog-footer-right-underInput{
+
+    .blog-footer-right-underInput-mailAndTel{
+      width: 118px;
+      float: left;
+      font-size: 12px;
+      color: #9b9b9b;
+    }
+
+    .blog-footer-right-underInput-send{
+      width: 192px;
+      height: 42px;
+      line-height: 42px;
+      background-color: red;
+      color: white;
+      text-align: center;
+      cursor: pointer;
+      opacity: 1;
+      float: right;
+      &:hover{
+        opacity: 0.6;
+      }
+    }
+
+  }
+
+}
