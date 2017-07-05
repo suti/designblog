@@ -1,28 +1,29 @@
 <template>
-  <div class="admin-comp-richEdit"></div>
+  <div class="admin-comp-richEdit">
+    <textarea
+      name="" id="" cols="30" rows="10"
+      @input="input"
+    ></textarea>
+    <div v-html="editorContent"></div>
+  </div>
 </template>
 <script>
-  import Wang from 'wangeditor'
+  import showdown from 'showdown'
+
+  let converter=new showdown.Converter()
 
   export default{
 	  name: 'editor',
 	  data () {
 		  return {
-			  editorContent: ''
+			  editorContent: '',
 		  }
 	  },
 	  methods: {
-		  getContent: function () {
-			  alert(this.editorContent)
+		  input(e) {
+			  this.editorContent=converter.makeHtml(e.target.value)
 		  }
 	  },
-	  mounted() {
-		  let editor = new Wang('.admin-comp-richEdit')
-		  editor.customConfig.onchange = (html) => {
-			  this.editorContent = html
-		  }
-		  editor.create()
-	  }
   }
 </script>
 <style lang="less" rel="stylesheet/less" scoped>

@@ -37,10 +37,10 @@
     "html-loader": "^0.4.5",
     "postcss": "^6.0.2",
     "postcss-sprites": "^4.2.1",
+    "showdown": "^1.7.1",
     "vue": "^2.3.4",
     "vue-axios": "^2.0.2",
     "vue-router": "^2.6.0",
-    "vuex": "^2.3.1",
-    "wangeditor": "^3.0.2"
+    "vuex": "^2.3.1"
   }
 }
