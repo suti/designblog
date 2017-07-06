@@ -12,7 +12,6 @@ function resolve(dir) {
 }
 
 let devConfig = {
-	entry: resolve('src/'+process.env.DEV_ENTRY+'/main.js'),
 	output: {
 		path: resolve('dist'),
 		publicPath: '/dist/',
@@ -28,4 +27,13 @@ let devConfig = {
 	devtool: '#eval-source-map'
 }
 
-module.exports = merge(baseConfig, devConfig)
+module.exports = (env)=>{
+	let entry=null
+	if(env&&env.path){
+		entry=env.path
+	}else {
+		entry=resolve('src/'+process.env.DEV_ENTRY+'/main.js')
+	}
+	return merge(baseConfig,devConfig,{entry})
+}
+
