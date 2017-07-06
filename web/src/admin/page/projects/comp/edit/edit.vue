@@ -109,7 +109,7 @@
       .admin-project-edit-content-intro{
         float: left;
         width: 474px;
-        margin-right: 70px;
+        margin-right: 60px;
 
         .admin-project-edit-content-intro-img{
           margin-bottom: 24px;

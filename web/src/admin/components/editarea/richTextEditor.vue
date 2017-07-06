@@ -1,7 +1,7 @@
 <template>
   <div class="admin-comp-richEdit">
     <textarea
-      name="" id="" cols="30" rows="10"
+      class=""
       @input="input"
     ></textarea>
     <div v-html="editorContent"></div>
@@ -29,5 +29,7 @@
 <style lang="less" rel="stylesheet/less" scoped>
   .admin-comp-richEdit{
     width: 700px;
+
+
   }
 </style>
