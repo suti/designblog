@@ -34,17 +34,17 @@ const schemaModel = {
 	}                               // 是否精选
 }
 
-let projectSchema = new mongoose.Schema(schemaModel)
+let schema = new mongoose.Schema(schemaModel)
 
 Array.prototype.forEach.call(['chTitle','enTitle','author','createTime','showKind','isRecommend'],e=>{
-	projectSchema.query[e]=function(el){
+	schema.query[e]=function(el){
 		return this.find({[e]:new RegExp(el,'i')})
 	}
 })
 
-projectSchema.statics._update=function(con,doc,opt,cb){
+schema.statics._update=function(con,doc,opt,cb){
 	doc.updateTime=Date.now()
 	this.update(con,doc,opt,cb)
 }
 
-module.exports=projectSchema
+module.exports=schema
