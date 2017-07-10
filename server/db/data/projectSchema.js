@@ -58,7 +58,7 @@ schema.statics._create=function(con){
 			return Promise.reject(err)
 		})
 	},err=>{
-		Promise.reject(err)
+		return Promise.reject(err)
 	})
 }
 

@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const projectSchema = require('./data/projectSchema')
 const articleSchema = require('./data/articleSchema')
 const toolsSchema = require('./data/toolsSchema')
+const typesSchema = require('./data/typesSchema')
 const userSchema = require('./user/userSchema')
 const pageSchema = require('./pageData/pageSchema')
 const mailSchema = require('./pageData/mailSchema')
@@ -28,6 +29,7 @@ dbSchemas.push({name:'tool',model:db.model('tool',toolsSchema)})
 dbSchemas.push({name:'user',model:db.model('user',userSchema)})
 dbSchemas.push({name:'page',model:db.model('page',pageSchema)})
 dbSchemas.push({name:'mail',model:db.model('mail',mailSchema)})
+dbSchemas.push({name:'type',model:db.model('type',typesSchema)})
 
 
 function DesignBlogDB() {

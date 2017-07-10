@@ -51,7 +51,10 @@ class dbfunc{
 
 	}
 
-	//检查用户名是否存在（返回全部doc）
+	/*`*
+	 * 检查用户名是否存在（返回全部doc）
+	 * @param u
+	 */
 	checkUserExist(u) {
 		return user.findOne().user(u).exec()
 			.then(result=>{
@@ -64,7 +67,11 @@ class dbfunc{
 			})
 	}
 
-	//检查用户名密码，正确返回用户信息（返回全部doc）
+	/**
+	 *检查用户名密码，正确返回用户信息（返回全部doc）
+	 * @param u
+	 * @param p
+	 */
 	checkUserPassWD(u,p) {
 		return user.findOne().user(u).exec()
 			.then(result=>{
@@ -78,7 +85,12 @@ class dbfunc{
 			})
 	}
 
-	//添加新用户 用户名|密码|类型
+	/**
+	 *添加新用户 用户名|密码|类型
+	 * @param u
+	 * @param p
+	 * @param t
+	 */
 	addUser(u,p,t){
 		let passwd=aes.encrypt(p)
 		return user.create({user:u,passwd,type:t})
@@ -89,7 +101,12 @@ class dbfunc{
 			})
 	}
 
-	//编辑用户 用户名|密码|类型
+	/**
+	 *编辑用户 用户名|密码|类型
+	 * @param u
+	 * @param p
+	 * @param t
+	 */
 	updateUser(u,p,t){
 		let doc={}
 		if(p)
@@ -104,7 +121,10 @@ class dbfunc{
 			})
 	}
 
-	//删除用户
+	/**
+	 *删除用户
+	 * @param u
+	 */
 	removeUser(u){
 		return user.remove({user:u})
 			.then(e=>{
@@ -114,6 +134,23 @@ class dbfunc{
 			})
 	}
 
+	/**
+	 *
+	 */
+
+	getProject(tag,isShow,isRecommend){
+		return project.find({}).exec()
+			.then(e=>{
+				return Promise.resolve()
+			},err=>{
+				return Promise.reject(err)
+			})
+	}
+
+	/**
+	 *
+	 * @param data
+	 */
 	addProject(data){
 		let {chTitle,enTitle,tag,author,profile,createTime,introduce,
 			url,imgUrl,markdown,showKind,sort,isShow,isRecommend}=data
@@ -126,6 +163,11 @@ class dbfunc{
 			})
 	}
 
+	/**
+	 *
+	 * @param id
+	 * @param data
+	 */
 	updateProject(id,data){
 		let {chTitle,enTitle,tag,author,profile,createTime,introduce,
 			url,imgUrl,markdown,showKind,sort,isShow,isRecommend}=data
@@ -138,9 +180,66 @@ class dbfunc{
 			})
 	}
 
+	/**
+	 *
+	 * @param id
+	 */
 	removeProject(id){
-
+		return project._remove({id})
+			.then(e=>{
+				return Promise.resolve()
+			},err=>{
+				return Promise.reject(err)
+			})
 	}
+
+	/**
+	 *
+	 * @param data
+	 */
+	addArticle(data){
+		let {chTitle,tag,author,profile,createTime,introduce,
+			url,imgUrl,markdown,showKind,sort,isShow,isRecommend}=data
+		return article._create({chTitle,tag,author,profile,createTime,introduce,
+			url,imgUrl,markdown,showKind,sort,isShow,isRecommend})
+			.then(e=>{
+				return Promise.resolve()
+			},err=>{
+				return Promise.reject(err)
+			})
+	}
+
+	/**
+	 *
+	 * @param id
+	 * @param data
+	 */
+	updateArticle(id,data){
+		let {chTitle,tag,author,profile,createTime,introduce,
+			url,imgUrl,markdown,showKind,sort,isShow,isRecommend}=data
+		return article._update({id},{chTitle,tag,author,profile,createTime,introduce,
+			url,imgUrl,markdown,showKind,sort,isShow,isRecommend})
+			.then(e=>{
+				return Promise.resolve()
+			},err=>{
+				return Promise.reject(err)
+			})
+	}
+
+	/**
+	 *
+	 * @param id
+	 */
+	removeArticle(id){
+		return article._remove({id})
+			.then(e=>{
+				return Promise.resolve()
+			},err=>{
+				return Promise.reject(err)
+			})
+	}
+
+
 
 }
 

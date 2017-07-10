@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const schemaModel = {
 	chTitle: String,                // 中文名
+	id:Number,
 	tag: Array,                     //（项目标签id）
 	author: String,                 // 参与者
 	profile: String,                // 项目简介
@@ -34,11 +35,25 @@ const schemaModel = {
 
 let schema = new mongoose.Schema(schemaModel)
 
-Array.prototype.forEach.call(['chTitle','author','createTime','showKind','isRecommend'],e=>{
+Array.prototype.forEach.call(['chTitle','author','createTime','showKind','isRecommend','id'],e=>{
 	schema.query[e]=function(el){
 		return this.find({[e]:new RegExp(el,'i')})
 	}
 })
+
+schema.statics._create=function(con){
+	return this.count({}).then(result=>{
+		con.id=result+1
+		console.log(con)
+		return this.create(con).then(e=>{
+			return Promise.resolve()
+		},err=>{
+			return Promise.reject(err)
+		})
+	},err=>{
+		return Promise.reject(err)
+	})
+}
 
 schema.statics._update=function(con,doc,opt){
 	doc.updateTime=Date.now()
