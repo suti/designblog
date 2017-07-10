@@ -1,8 +1,18 @@
+/**
+ * Created by suti on 2017/7/9.
+ */
 const mongoose = require('mongoose')
 const schemaModel = {
-	user: String,
-	passwd: String,
-	type:Number,
+	introduce:String,
+	Banner:[String],
+	recommendUrl:{
+		showNumber:Number,
+		urls:[Array]
+	},
+	weibo:String,
+	beance:String,
+	zanKu:String,
+	weChat:String,
 	updateTime: {
 		type: Date,
 		default: Date.now
@@ -15,11 +25,11 @@ const schemaModel = {
 
 let schema = new mongoose.Schema(schemaModel)
 
-Array.prototype.forEach.call(['user','type','updateTime'],e=>{
-	schema.query[e]=function(el){
-		return this.find({[e]:new RegExp(el,'i')})
-	}
-})
+// Array.prototype.forEach.call(['chTitle','author','createTime','showKind','isRecommend'],e=>{
+// 	schema.query[e]=function(el){
+// 		return this.find({[e]:new RegExp(el,'i')})
+// 	}
+// })
 
 schema.statics._update=function(con,doc,opt){
 	doc.updateTime=Date.now()

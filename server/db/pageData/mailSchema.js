@@ -1,8 +1,11 @@
+/**
+ * Created by suti on 2017/7/9.
+ */
 const mongoose = require('mongoose')
 const schemaModel = {
-	user: String,
-	passwd: String,
-	type:Number,
+	mail: String,
+	name: String,
+	no:Number,
 	updateTime: {
 		type: Date,
 		default: Date.now
@@ -15,7 +18,7 @@ const schemaModel = {
 
 let schema = new mongoose.Schema(schemaModel)
 
-Array.prototype.forEach.call(['user','type','updateTime'],e=>{
+Array.prototype.forEach.call(['mail','name','no','updateTime'],e=>{
 	schema.query[e]=function(el){
 		return this.find({[e]:new RegExp(el,'i')})
 	}

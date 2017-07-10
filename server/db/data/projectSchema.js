@@ -3,6 +3,7 @@ const schemaModel = {
 	// _id: Schema.Types.ObjectId,     // 主键
 	chTitle: String,                // 中文项目名
 	enTitle: String,                // 英文项目名
+	id:Number,
 	tag: Array,                     // 外键（项目标签id）
 	author: String,                 // 参与者
 	profile: String,                // 项目简介
@@ -42,9 +43,15 @@ Array.prototype.forEach.call(['chTitle','enTitle','author','createTime','showKin
 	}
 })
 
-schema.statics._update=function(con,doc,opt,cb){
+schema.statics._update=function(con,doc,opt){
 	doc.updateTime=Date.now()
-	this.update(con,doc,opt,cb)
+	return this.update(con,doc,opt)
+}
+
+schema.static._create=function(con){
+	let count=schema.count({})
+	con.id=count+1
+	return this.create(con)
 }
 
 module.exports=schema

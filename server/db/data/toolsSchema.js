@@ -22,9 +22,9 @@ Array.prototype.forEach.call(['chTitle','enTitle','createTime'],e=>{
 	}
 })
 
-schema.statics._update=function(con,doc,opt,cb){
+schema.statics._update=function(con,doc,opt){
 	doc.updateTime=Date.now()
-	this.update(con,doc,opt,cb)
+	return this.update(con,doc,opt)
 }
 
 module.exports=schema
