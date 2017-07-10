@@ -23,6 +23,14 @@ let devConfig = {
 	devServer: {
 		historyApiFallback: true,
 		noInfo: true,
+		proxy: {
+			'/localapi/*': {
+				target: 'http://localhost:2233',
+				secure: false,
+				pathRewrite: {"^/localapi" : ""},
+				changeOrigin:true
+			}
+		}
 	},
 	devtool: '#eval-source-map'
 }

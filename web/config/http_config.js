@@ -4,13 +4,19 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import env from './env_config'
 
 axios.interceptors.request.use(config=>{
-	let {url,params}=config
-	url+='.do'
-	typeof params==='object'?params.data_type='json':params={data_type:'json'}
+	let {url,data}=config
+	if(env.env==='dev'){
+		url='/localapi'+url+'.do'
+	}else {
+		url+='.do'
+	}
+	typeof data==='object'?data['data_type']='json':data={data_type:'json'}
+	console.log(data)
 	config.url=url
-	config.params=params
+	config.params=data
 	return config
 },error=>{
 
