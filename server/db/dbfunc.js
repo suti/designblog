@@ -126,7 +126,19 @@ class dbfunc{
 			})
 	}
 
-	updateProject(el,data){
+	updateProject(id,data){
+		let {chTitle,enTitle,tag,author,profile,createTime,introduce,
+			url,imgUrl,markdown,showKind,sort,isShow,isRecommend}=data
+		project._update({id},{chTitle,enTitle,tag,author,profile,createTime,introduce,
+			url,imgUrl,markdown,showKind,sort,isShow,isRecommend})
+			.then(e=>{
+				return Promise.resolve()
+			},err=>{
+				return Promise.reject(err)
+			})
+	}
+
+	removeProject(id){
 
 	}
 

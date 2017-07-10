@@ -38,4 +38,24 @@ dbSchemas.map(e=>{
 	DesignBlogDB.prototype[e.name]=e.model
 })
 
+// let a=new DesignBlogDB();
+//
+// // a.project._create({author:1,enTitle:'nihao'})
+// // 	.then(e=>{
+// // 		a.project._create({author:2,enTitle:'nihao'}).then(
+// // 			e=>{
+// // 				a.project._create({author:3,enTitle:'hi'}).then(e=>{
+// // 					a.project._create({author:4,enTitle:'dfas'}).then(e=>{
+// // 						console.log('ok')
+// // 					})
+// // 				})
+// // 			}
+// // 		)
+// // 	})
+//
+//
+// a.project._remove({id:2}).then(result=>{
+// 	console.log('ok2')
+// })
+
 module.exports=DesignBlogDB

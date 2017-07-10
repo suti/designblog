@@ -45,4 +45,31 @@ schema.statics._update=function(con,doc,opt){
 	return this.update(con,doc,opt)
 }
 
+schema.statics._remove=function(con){
+	let _this=this
+	return this.findOne(con)
+		.then(result=>{
+			if(result!==undefined){
+				let id=result.id
+				return result.remove().then(e=>{
+					return _this.find({id:{$gt:id}}).exec()
+						.then(result=>{
+							if(result.length>0){
+								let array=[]
+								for(let i=0;i<result.length;i++){
+									result[i].id-=1
+									array.push(result[i].save())
+								}
+								return Promise.all(array)
+							}
+						})
+				},err=>{
+					return Promise.reject(err)
+				})
+			}else{
+				return Promise.reject()
+			}
+		})
+}
+
 module.exports=schema
