@@ -24,6 +24,11 @@
 			  messages:'admin'
       }
     },
+    beforeMount(){
+      this.$http.post('/admin/login',{user:'lxy1',passwd:'nihao123'}).then(res=>{
+      	console.log(res.data)
+      })
+    },
     mounted(){
 
     },

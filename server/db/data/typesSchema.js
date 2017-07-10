@@ -1,7 +1,10 @@
+/**
+ * Created by suti on 2017/7/10.
+ */
 const mongoose = require('mongoose')
 const schemaModel = {
-	user: String,
-	passwd: String,
+	id:Number,
+	name: String,                     //（项目标签id）
 	type:Number,
 	updateTime: {
 		type: Date,
@@ -15,7 +18,7 @@ const schemaModel = {
 
 let schema = new mongoose.Schema(schemaModel)
 
-Array.prototype.forEach.call(['user','type','updateTime'],e=>{
+Array.prototype.forEach.call(['chTitle','author','createTime','showKind','isRecommend','id'],e=>{
 	schema.query[e]=function(el){
 		return this.find({[e]:new RegExp(el,'i')})
 	}
@@ -25,5 +28,6 @@ schema.statics._update=function(con,doc,opt){
 	doc.updateTime=Date.now()
 	return this.update(con,doc,opt)
 }
+
 
 module.exports=schema

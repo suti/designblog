@@ -3,6 +3,7 @@ const schemaModel = {
 	// _id: Schema.Types.ObjectId,     // 主键
 	chTitle: String,                // 中文项目名
 	enTitle: String,                // 英文项目名
+	id:Number,
 	tag: Array,                     // 外键（项目标签id）
 	author: String,                 // 参与者
 	profile: String,                // 项目简介
@@ -36,15 +37,56 @@ const schemaModel = {
 
 let schema = new mongoose.Schema(schemaModel)
 
-Array.prototype.forEach.call(['chTitle','enTitle','author','createTime','showKind','isRecommend'],e=>{
+Array.prototype.forEach.call(['chTitle','enTitle','author','createTime','showKind','isRecommend','id'],e=>{
 	schema.query[e]=function(el){
 		return this.find({[e]:new RegExp(el,'i')})
 	}
 })
 
-schema.statics._update=function(con,doc,opt,cb){
+schema.statics._update=function(con,doc,opt){
 	doc.updateTime=Date.now()
-	this.update(con,doc,opt,cb)
+	return this.update(con,doc,opt)
+}
+
+schema.statics._create=function(con){
+	return this.count({}).then(result=>{
+		con.id=result+1
+		console.log(con)
+		return this.create(con).then(e=>{
+			return Promise.resolve()
+		},err=>{
+			return Promise.reject(err)
+		})
+	},err=>{
+		return Promise.reject(err)
+	})
+}
+
+schema.statics._remove=function(con){
+	let _this=this
+	return this.findOne(con)
+		.then(result=>{
+			if(result!==undefined){
+				let id=result.id
+				return result.remove().then(e=>{
+					return _this.find({id:{$gt:id}}).exec()
+						.then(result=>{
+							if(result.length>0){
+								let array=[]
+								for(let i=0;i<result.length;i++){
+									result[i].id-=1
+									array.push(result[i].save())
+								}
+								return Promise.all(array)
+							}
+						})
+				},err=>{
+					return Promise.reject(err)
+				})
+			}else{
+				return Promise.reject()
+			}
+		})
 }
 
 module.exports=schema
