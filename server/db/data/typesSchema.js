@@ -18,7 +18,7 @@ const schemaModel = {
 
 let schema = new mongoose.Schema(schemaModel)
 
-Array.prototype.forEach.call(['chTitle','author','createTime','showKind','isRecommend','id'],e=>{
+Array.prototype.forEach.call(['name','createTime','type','id'],e=>{
 	schema.query[e]=function(el){
 		return this.find({[e]:new RegExp(el,'i')})
 	}
@@ -28,6 +28,5 @@ schema.statics._update=function(con,doc,opt){
 	doc.updateTime=Date.now()
 	return this.update(con,doc,opt)
 }
-
 
 module.exports=schema

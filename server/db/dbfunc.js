@@ -3,11 +3,13 @@
  */
 const db =new (require('./dbconfig'))
 const CryptoJS = require('crypto-js')
+const Promise = require('bluebird')
 
 const user = db.user
 const article = db.article
 const project = db.project
 const tools =  db.tools
+const type = db.type
 
 /**
  * AES加解密
@@ -51,7 +53,7 @@ class dbfunc{
 
 	}
 
-	/*`*
+	/**
 	 * 检查用户名是否存在（返回全部doc）
 	 * @param u
 	 */
@@ -134,21 +136,29 @@ class dbfunc{
 			})
 	}
 
-	/**
-	 *
-	 */
 
+	/**
+	 *获取项目
+	 * @param tag
+	 * @param isShow
+	 * @param isRecommend
+	 */
 	getProject(tag,isShow,isRecommend){
-		return project.find({}).exec()
-			.then(e=>{
-				return Promise.resolve()
+		let query={}
+		tag&&(query.tag={$in:[tag]})
+		isShow&&(query.isShow=isShow)
+		isRecommend&&(query.isRecommend=isRecommend)
+		console.log(query)
+		return project.find(query).exec()
+			.then(result=>{
+				return Promise.resolve(result)
 			},err=>{
 				return Promise.reject(err)
 			})
 	}
 
 	/**
-	 *
+	 *添加项目
 	 * @param data
 	 */
 	addProject(data){
@@ -164,7 +174,7 @@ class dbfunc{
 	}
 
 	/**
-	 *
+	 *修改项目
 	 * @param id
 	 * @param data
 	 */
@@ -181,7 +191,7 @@ class dbfunc{
 	}
 
 	/**
-	 *
+	 *删除项目
 	 * @param id
 	 */
 	removeProject(id){
@@ -194,7 +204,26 @@ class dbfunc{
 	}
 
 	/**
-	 *
+	 *获取文章
+	 * @param tag
+	 * @param isShow
+	 * @param isRecommend
+	 */
+	getArticle(tag,isShow,isRecommend){
+		let query={}
+		tag&&(query.tag={$in:[tag]})
+		isShow&&(query.isShow=isShow)
+		isRecommend&&(query.isRecommend=isRecommend)
+		return article.find(query).exec()
+			.then(result=>{
+				return Promise.resolve(result)
+			},err=>{
+				return Promise.reject(err)
+			})
+	}
+
+	/**
+	 *添加文章
 	 * @param data
 	 */
 	addArticle(data){
@@ -210,7 +239,7 @@ class dbfunc{
 	}
 
 	/**
-	 *
+	 *修改文章
 	 * @param id
 	 * @param data
 	 */
@@ -227,11 +256,56 @@ class dbfunc{
 	}
 
 	/**
-	 *
+	 *删除文章
 	 * @param id
 	 */
 	removeArticle(id){
 		return article._remove({id})
+			.then(e=>{
+				return Promise.resolve()
+			},err=>{
+				return Promise.reject(err)
+			})
+	}
+
+	/**
+	 * 更新分类标签，只能更新不能删除
+	 * @param arr
+	 * @return {*}
+	 */
+	updateTypes(arr){
+		function iterate({name,type}) {
+			return type.findOne({name,type}).exec()
+				.then(result=>{
+					if(result[0]){
+						return Promise.resolve()
+					}else {
+						return type.create({name,type})
+							.then(e=>{
+								return Promise.resolve()
+							},err=>{
+								return Promise.reject(err)
+							})
+					}
+				},err=>{
+					return Promise.reject(err)
+				})
+		}
+
+		let p=iterate(arr[0])
+		for(let i=1;i<arr.length;i++){
+			p=p.then(()=>{iterate(arr[i])})
+		}
+
+		return p
+	}
+
+	/**
+	 * 获取分类标签
+	 * @return {Promise.<TResult>}
+	 */
+	getTypes(){
+		return type.find({}).exec()
 			.then(e=>{
 				return Promise.resolve()
 			},err=>{

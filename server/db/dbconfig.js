@@ -9,7 +9,10 @@ const typesSchema = require('./data/typesSchema')
 const userSchema = require('./user/userSchema')
 const pageSchema = require('./pageData/pageSchema')
 const mailSchema = require('./pageData/mailSchema')
+const Promise = require("bluebird")
 const dbPath = 'mongodb://localhost:27017/designblog'
+
+mongoose.Promise=Promise
 
 let db = mongoose.connect(dbPath), dbSchemas=[]
 

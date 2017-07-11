@@ -2,6 +2,7 @@
  * Created by suti on 2017/7/8.
  */
 const express = require('express')
+const Promise = require('bluebird')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const routers = require('../api')
