@@ -99,6 +99,7 @@ class dbfunc{
 			.then(e=>{
 				return Promise.resolve()
 			},err=>{
+				console.log(e)
 				return Promise.reject(err)
 			})
 	}
@@ -164,7 +165,7 @@ class dbfunc{
 	addProject(data){
 		let {chTitle,enTitle,tag,author,profile,createTime,introduce,
 			url,imgUrl,markdown,showKind,sort,isShow,isRecommend}=data
-		project._create({chTitle,enTitle,tag,author,profile,createTime,introduce,
+		return project._create({chTitle,enTitle,tag,author,profile,createTime,introduce,
 			url,imgUrl,markdown,showKind,sort,isShow,isRecommend})
 			.then(e=>{
 				return Promise.resolve()
@@ -181,7 +182,7 @@ class dbfunc{
 	updateProject(id,data){
 		let {chTitle,enTitle,tag,author,profile,createTime,introduce,
 			url,imgUrl,markdown,showKind,sort,isShow,isRecommend}=data
-		project._update({id},{chTitle,enTitle,tag,author,profile,createTime,introduce,
+		return project._update({id},{chTitle,enTitle,tag,author,profile,createTime,introduce,
 			url,imgUrl,markdown,showKind,sort,isShow,isRecommend})
 			.then(e=>{
 				return Promise.resolve()
@@ -264,6 +265,7 @@ class dbfunc{
 			.then(e=>{
 				return Promise.resolve()
 			},err=>{
+				console.log(err)
 				return Promise.reject(err)
 			})
 	}
@@ -274,13 +276,13 @@ class dbfunc{
 	 * @return {*}
 	 */
 	updateTypes(arr){
-		function iterate({name,type}) {
-			return type.findOne({name,type}).exec()
+		function iterate({name,t}) {
+			return type.findOne({name,type:t}).exec()
 				.then(result=>{
-					if(result[0]){
+					if(result&&result[0]){
 						return Promise.resolve()
 					}else {
-						return type.create({name,type})
+						return type.create({name,type:t})
 							.then(e=>{
 								return Promise.resolve()
 							},err=>{
@@ -307,7 +309,7 @@ class dbfunc{
 	getTypes(){
 		return type.find({}).exec()
 			.then(e=>{
-				return Promise.resolve()
+				return Promise.resolve(e)
 			},err=>{
 				return Promise.reject(err)
 			})

@@ -12,7 +12,11 @@ router.post('/admin/addArticle.do',(req,res,next)=>{
 		db.addArticle({chTitle,tag,author,profile,createTime,introduce,
 			url,imgUrl,markdown,showKind,sort,isShow,isRecommend})
 			.then(result=>{
-				db.updateTypes(tag).then(()=>{
+				let arr=[]
+				tag.forEach(e=>{
+					arr.push({name:e,t:1})
+				})
+				db.updateTypes(arr).then(()=>{
 					res.send({code:1})
 					res.end()
 				},err=>{

@@ -8,7 +8,7 @@ router.post('/admin/updateUser.do',(req,res,next)=>{
 	let {user,passwd,type}=req.query
 
 	if(req.session.user!==null&&req.session.userType===0){
-		db.updateUser({user,passwd,type})
+		db.updateUser(user,passwd,type)
 			.then(result=>{
 				res.send({code:1})
 				res.end()

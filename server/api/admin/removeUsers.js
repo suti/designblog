@@ -4,7 +4,7 @@
 const router = require('express').Router()
 const db =new (require('../../db/dbfunc'))
 
-router.post('/admin/addUser.do',(req,res,next)=>{
+router.post('/admin/removeUser.do',(req,res,next)=>{
 	let {user}=req.query
 
 	if(req.session.user!==null&&req.session.userType===0){

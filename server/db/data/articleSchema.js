@@ -64,7 +64,8 @@ schema.statics._remove=function(con){
 	let _this=this
 	return this.findOne(con)
 		.then(result=>{
-			if(result!==undefined){
+			if(result){
+				console.log(result)
 				let id=result.id
 				return result.remove().then(e=>{
 					return _this.find({id:{$gt:id}}).exec()
@@ -82,7 +83,7 @@ schema.statics._remove=function(con){
 					return Promise.reject(err)
 				})
 			}else{
-				return Promise.reject()
+				return Promise.resolve()
 			}
 		})
 }

@@ -8,7 +8,7 @@ router.post('/admin/addUser.do',(req,res,next)=>{
 	let {user,passwd,type}=req.query
 
 	if(req.session.user!==null&&req.session.userType===0){
-		db.addUser({user,passwd,type})
+		db.addUser(user,passwd,type)
 			.then(result=>{
 				res.send({code:1})
 				res.end()

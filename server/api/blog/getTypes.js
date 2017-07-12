@@ -10,7 +10,13 @@ router.post('/blog/getType.do',(req,res,next)=>{
 		{tag,isShow,isRecommend}=query
 	db.getTypes().then(result=>{
 		let data=[]
-		if(result.length>0){
+		console.log(result)
+		if(result&&result.length>0){
+			for (let i=0;i<result.length;i++){
+				let {name,type}=result[i]
+				data.push({name,type})
+			}
+			console.log(data)
 			res.send({code:1,data})
 		}else {
 			res.send({code:0})
