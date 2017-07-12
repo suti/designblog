@@ -9,6 +9,7 @@ import friends from '../page/friends/friends.vue'
 import about from '../page/about/about.vue'
 import others from '../page/others/others.vue'
 import account from '../page/account/account.vue'
+import test from '../components/test.vue'
 
 export default [
 	{
@@ -43,4 +44,8 @@ export default [
 		path:'/admin/account',
 		component:account
 	},
+	{
+		path:'/test',
+		component:test
+	}
 ]
