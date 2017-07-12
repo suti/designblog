@@ -3,7 +3,7 @@
  */
 const router = require('express').Router()
 
-router.post('/admin/logout',(req,res,next)=>{
+router.post('/admin/logout.do',(req,res,next)=>{
 	if(req.session.user){
 		console.log(req.session.user,' logout')
 		req.session.destroy(err=>{

@@ -10,7 +10,8 @@ router.post('/admin/login.do',(req,res,next)=>{
 	if(user!==undefined&&passwd!==undefined){
 		db.checkUserPassWD(user,passwd).then(result=>{
 			if(result.c){
-				req.session.user=req.query.user
+				req.session.user=result.data.user
+				req.session.userType=result.data.type
 				res.send({code:1,data:result.data})
 			}else{
 				res.send({code:0})
