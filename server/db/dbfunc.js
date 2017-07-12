@@ -313,9 +313,6 @@ class dbfunc{
 			})
 	}
 
-
-
 }
-
 
 module.exports=dbfunc

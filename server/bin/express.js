@@ -17,20 +17,6 @@ app.use(session({
 	cookie:{maxAge:60000,httpOnly:true}
 }))
 
-app.use('/',(req,res,next)=>{
-	if(req.session&&req.session.user){
-		db.checkUserExist(req.session.user).then(resolve=>{
-			console.log('has this '+req.session.user)
-			next()
-		},reject=>{
-			req.session.destroy()
-			next()
-		})
-	}else{
-		next()
-	}
-})
-
 app.use('/',routers)
 
 app.listen(2233)
