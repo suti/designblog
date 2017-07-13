@@ -1,0 +1,53 @@
+.blog-project-block{
+  width: 396px;
+  height: 238px;
+  display:inline-block;
+  margin-right: 6px;
+  margin-top: 6px;
+  position: relative;
+  vertical-align: top;
+  .blog-project-block-pic{
+    width: 100%;
+    height: 100%;
+    >img{
+      width: 100%;
+      height: auto;
+    }
+  }
+  &:hover{
+    position: relative;
+    top:-2px;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.24);
+  }
+}
+//普通的block  1个单位
+.normal{
+  width: 396px;
+  height: 238px;
+}
+//特殊的block  4个单位
+.special{
+  width: 797px;
+  height: 484px;
+}
+.blog-project-block-content{
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  color: white;
+  .blog-project-block-content-engName{
+    display: block;
+  }
+  .blog-project-block-content-chineseName{
+
+  }
+  .blog-project-block-content-year{
+    font-size: 12px;
+    vertical-align: top;
+    margin-left: 10px;
+  }
+  .blog-project-block-content-customerName{
+    display: block;
+    font-size: 12px;
+  }
+}
