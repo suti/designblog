@@ -18,11 +18,7 @@
       :eleData="eleData"
       :listSum="listSum"
     >
-      <template scope="waterfall">
-        <div :style="waterfall.listData.boxStyle" class="test">
-          <img :style="waterfall.listData.imgStyle">
-        </div>
-      </template>
+      <block></block>
     </waterfall>
 
   </div>
@@ -30,6 +26,7 @@
 <script>
   import waterfall from '../../components/waterFall/waterfall.vue'
   import carousel from '../../components/carousel/carousel.vue'
+  import block from './comp/block.vue'
 
   export default{
     name: 'blog-index',
@@ -38,23 +35,25 @@
         // 容器矩形
         boxRect: {
           // 图片的宽度
-          width: 224,
+          width: 282,
           top: 8,
           right: 8,
           left: 8,
           bottom: 65,
           // 每个模板之间的间距
-          marginLeft: 8,
-          marginTop: 8
+          marginLeft: 26,
+          marginTop: 24
         },
         // 数据
-        eleData: [],
+        eleData: [
+          {},{},{}
+        ],
         // 列数
-        listSum: 0
+        listSum: 4,
       }
     },
     components: {
-      waterfall,carousel
+      waterfall,carousel,block
     },
 
     methods: {
