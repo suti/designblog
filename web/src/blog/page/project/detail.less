@@ -1,0 +1,113 @@
+#blog-project-detail{
+  width: 100%;
+  height: auto;
+  padding-top: 44px;
+  &:after{
+    display:block;
+    content:"";
+    height:0;
+    clear:both;
+    overflow:hidden;
+    visibility:hidden;
+  }
+}
+.blog-project-detail-left{
+  width: 398px;
+  height: auto;
+  float: left;
+
+  .blog-project-detail-left-englishName{
+    width: 370px;
+    font-size: 32px;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+  }
+
+  .blog-project-detail-left-chineseNameAndYear{
+    margin-top: 14px;
+    width: 370px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+    >span:nth-child(1){
+      display: inline-block;
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    >span:nth-child(2){
+      display: inline-block;
+      font-size: 18px;
+      vertical-align: top;
+      padding-top: 6px;
+      margin-left: 20px;
+    }
+  }
+
+  .blog-project-detail-left-customerName{
+    width: 370px;
+    font-size: 18px;
+    color: #828282;
+    margin-top: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+  }
+
+  .blog-project-detail-left-style{
+    margin-top: 54px;
+    color: #828282;
+  }
+
+  .blog-project-detail-left-author{
+    width: 370px;
+    margin-top: 12px;
+    color: #828282;
+  }
+
+  .blog-project-detail-left-projectDescription{
+    margin-top: 34px;
+    width: 370px;
+    height: auto;
+    color: #828282;
+  }
+
+  .blog-project-detail-left-website{
+    margin-top: 24px;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover{
+      color: red;
+    }
+  }
+}
+.blog-project-detail-right{
+  width: 1202px;
+  height: auto;
+  float: right;
+
+  .blog-project-detail-right-pic{
+    width: 1202px;
+    height: 730px;
+    >img{
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .blog-project-detail-right-zhanwei{
+    height: 2px;
+    width: 100%;
+    margin-top: 14px;
+    background-color: #e5e5e5;
+  }
+  >p{
+    font-weight: bold;
+  }
+
+  .blog-project-detail-right-moreProject{
+
+  }
+}
