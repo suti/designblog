@@ -22,9 +22,9 @@
     data(){
   		return{
   			nav:[
-          {des:'Home',pop:'首页'},
-          {des:'Project',pop:'项目'},
-          {des:'Holyhi Lab',pop:'好厉害实验室'},
+          {des:'Home',pop:'首页',url:'/blog'},
+          {des:'Project',pop:'项目',url:'/blog/project'},
+          {des:'Holyhi Lab',pop:'好厉害实验室',url:'/blog/lab'},
         ],
         navActive:[]
       }
@@ -33,8 +33,9 @@
 
     },
     methods:{
-	    navClick({i}){
+	    navClick({i,e}){
 	    	this.$set(this.navActive,i,true)
+        this.$router.push(e.url);
       }
     }
   }
