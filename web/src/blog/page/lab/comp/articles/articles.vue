@@ -1,6 +1,6 @@
 <template>
-  <div id="">
-    test
+  <div id="blog-lab-content-articles">
+
   </div>
 </template>
 <script>
@@ -13,5 +13,5 @@
   }
 </script>
 <style rel="stylesheet/less" lang="less" scoped>
-
+  @import "./articles.less";
 </style>
