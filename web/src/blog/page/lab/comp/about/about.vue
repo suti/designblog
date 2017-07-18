@@ -30,7 +30,7 @@
         <span>bingo@holyhilab.com 胡兵兵</span>
       </div>
       <div class="blog-lab-content-about-contact-map">
-
+        <img src="./blog-lab-about-.png">
       </div>
     </div>
     <div class="blog-lab-content-about-team">
