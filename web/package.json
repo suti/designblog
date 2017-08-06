@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "blogdev": "cross-env DEV_ENTRY=blog webpack-dev-server --open --hot --config ./build/webpack.dev.conf.js",
+    "mblogdev": "cross-env DEV_ENTRY=mblog webpack-dev-server --open --hot --config ./build/webpack.dev.conf.js",
     "admindev": "cross-env DEV_ENTRY=admin webpack-dev-server --open --hot --config ./build/webpack.dev.conf.js",
     "test": "cross-env webpack-dev-server --open --hot --config ./build/webpack.dev.conf.js",
     "build": "npm run clean && cross-env webpack --progress --hide-modules --config ./build/webpack.build.conf.js&&node ./build/postcss.js",

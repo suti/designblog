@@ -6,7 +6,6 @@ const Promise = require('bluebird')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const routers = require('../api')
-const db = new (require('../db/dbfunc'))
 
 let app = express()
 app.use(cookieParser('bingo_blog_cookies'+Date.now()))
